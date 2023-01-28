@@ -1,8 +1,7 @@
-package Transport;
+package transport;
 
-import Check.Check;
-
-public class Transport {
+import check.Check;
+public abstract class Transport {
 
     private final String brand;
     private final String model;
@@ -10,11 +9,6 @@ public class Transport {
     public Transport(String brand, String model) {
         this.brand = Check.checkingString(brand,"Самоделка");
         this.model = Check.checkingString(model,"1");
-    }
-
-    public Transport () {
-        brand = null;
-        model = null;
     }
 
     public String getBrand() {
@@ -25,11 +19,11 @@ public class Transport {
         return model;
     }
 
-    public void startMoving() {
+    public static void startMoving() {
         System.out.println("Поехали ;)");
     }
 
-    public void stopMoving() {
+    public static void stopMoving() {
         System.out.println("Тпруу... ;)");
     }
 

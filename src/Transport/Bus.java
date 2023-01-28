@@ -1,16 +1,16 @@
-package Transport;
+package transport;
 
-import Check.Check;
-import Drivers.Driver_D;
+import drivers.DriverD;
+import check.Check;
 
-public class Bus <T extends Driver_D> extends Transport implements Competing {
+public class Bus <T extends DriverD> extends Transport implements Competing {
 
     private double engineVolume;
     private T driver;
 
     public Bus(String brand, String model, double engineVolume, T driver) {
         super(brand, model);
-        this.engineVolume = Check.chekingengineVolume(engineVolume, 5.0);
+        this.engineVolume = Check.checkingEngineVolume(engineVolume, 5.0);
         this.driver = driver;
     }
 
@@ -19,7 +19,7 @@ public class Bus <T extends Driver_D> extends Transport implements Competing {
     }
 
     public void setEngineVolume(double engineVolume) {
-        this.engineVolume = Check.chekingengineVolume(engineVolume, 5.0);
+        this.engineVolume = Check.checkingEngineVolume(engineVolume, 5.0);
     }
 
     public T getDriver() {

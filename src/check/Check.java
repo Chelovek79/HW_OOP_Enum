@@ -1,4 +1,4 @@
-package Check;
+package check;
 
 public class Check {
 
@@ -9,7 +9,7 @@ public class Check {
             return value;
         }
     }
-    public static double chekingengineVolume(double value, double otherValue) {
+    public static double checkingEngineVolume(double value, double otherValue) {
         if (value <= 0) {
             return otherValue;
         } else {

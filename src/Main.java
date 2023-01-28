@@ -1,27 +1,23 @@
-import Drivers.*;
-import Transport.*;
+import drivers.*;
+import transport.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        DB_Transport transport = new DB_Transport();
+        DbTransport transport = new DbTransport();
+        DbDrivers drivers = new DbDrivers();
+
         transport.getDriverCarNameC(0);
         transport.getDriverCarNameD(2);
         System.out.println(" ");
 
-        Driver drivers = new Driver_B();
-        Transport sporttrasport = new Transport();
-        Competing competing = new PassengerCar <> ();
-
         transport.getDriverCarNameB(1);
-        drivers.startDriving();
-        competing.bestTimeLap("5m 36sec");
-        competing.maxSpeed(184);
-        competing.pit_stop();
-        drivers.refuel();
-        sporttrasport.startMoving();
-        drivers.stopDriving();
+        drivers.getStartDrivingB(1);
+        transport.getDriverBbestLap(1, "5m 36sec");
+        drivers.getRefuelB(1);
+        Transport.startMoving();
+        drivers.getStopB(1);
         System.out.println("Финиш");
 
     }
