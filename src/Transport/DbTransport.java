@@ -1,10 +1,10 @@
-package Transport;
+package transport;
 
-import Drivers.DB_Drivers;
+import drivers.DbDrivers;
 
-public class DB_Transport {
+public class DbTransport {
 
-    DB_Drivers dbDrivers = new DB_Drivers();
+    DbDrivers dbDrivers = new DbDrivers();
 
     PassengerCar <?> [] smallcar = {new PassengerCar<> ("Toyota", "Chaser", 3.0, dbDrivers.getDriverB(0)),
             new PassengerCar<>("BMW", "750iL", 5.4, dbDrivers.getDriverB(2)),
@@ -21,6 +21,7 @@ public class DB_Transport {
             new Bus<>("ЛАЗ", "695Н", 6.0, dbDrivers.getDriverD(2)),
             new Bus<>("VolgaBus", "Серпантин-10", 8.4, dbDrivers.getDriverD(2)) };
 
+
     public void getDriverCarNameB(int i) {
         System.out.println("Водитель " + dbDrivers.getNameDriverB(i) + " управляет автомобилем " + smallcar[i].getBrand()
                 + " " + smallcar[i].getModel() + " и будет участвовать в заезде 'легковых машин'.");
@@ -35,4 +36,10 @@ public class DB_Transport {
         System.out.println("Водитель " + dbDrivers.getNameDriverD(i) + " управляет автобусом " +  buses[i].getBrand()
                 + " " + buses[i].getModel() + " и будет участвовать в заезде 'автобусов'.");
     }
+
+    public void getDriverBbestLap (int i, String time) {
+        System.out.print(dbDrivers.getNameDriverB(i) + " ");
+        smallcar[i].bestTimeLap(time);
+    }
+
 }

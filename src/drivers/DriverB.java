@@ -1,12 +1,10 @@
-package Drivers;
+package drivers;
 
-public class Driver_B extends Driver {
+public class DriverB extends Driver {
 
-    public Driver_B(String FIO, boolean driversLicense, double workExperience) {
-        super(FIO, driversLicense, workExperience);
+    public DriverB (String fio, boolean driversLicense, double workExperience) {
+        super(fio, driversLicense, workExperience);
     }
-
-    public Driver_B() {}
 
     @Override
     public void startDriving() {

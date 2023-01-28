@@ -1,17 +1,14 @@
-package Drivers;
+package drivers;
 
 public class Driver {
 
-    private final String FIO;
+    private final String fio;
     private boolean driversLicense;
     private double workExperience;
 
-    public Driver() {
-        FIO = null;
-    }
 
-    public Driver(String FIO, boolean driversLicense, double workExperience) {
-        this.FIO = FIO;
+    public Driver(String fio, boolean driversLicense, double workExperience) {
+        this.fio = fio;
         this.driversLicense = driversLicense;
         this.workExperience = workExperience;
     }
@@ -20,8 +17,8 @@ public class Driver {
     public void stopDriving() {}
     public void refuel() {}
 
-    public String getFIO() {
-        return FIO;
+    public String getFio() {
+        return fio;
     }
 
     public boolean isDriversLicense() {
@@ -42,6 +39,6 @@ public class Driver {
 
     @Override
     public String toString() {
-        return FIO + " Водительский стаж " + workExperience + ".";
+        return fio + " Водительский стаж " + workExperience + ".";
     }
 }
