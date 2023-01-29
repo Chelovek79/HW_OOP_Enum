@@ -10,7 +10,7 @@ public class Bus<T extends DriverD> extends Transport implements Competing {
         EspeciallySmall(0, 10),
         Small(10, 25),
         Average(25, 50),
-        Large(60, 80),
+        Large(50, 80),
         EspeciallyLarge(80, 120),
         NULL (0,0);
 

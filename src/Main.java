@@ -20,7 +20,7 @@ public class Main {
         drivers.getStopB(1);
         System.out.println("Финиш \n");
 
-        transport.printType(1, "B");
+        transport.printType(2, "B");
         transport.printType(0, "C");
         transport.printType(3, "D");
 

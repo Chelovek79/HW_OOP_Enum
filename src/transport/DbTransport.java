@@ -6,10 +6,10 @@ public class DbTransport {
 
     DbDrivers dbDrivers = new DbDrivers();
 
-    PassengerCar<?>[] smallcar = {new PassengerCar<>("Toyota", "Chaser", 3.0, "a", dbDrivers.getDriverB(0)),
-            new PassengerCar<>("BMW", "750iL", 5.4, null, dbDrivers.getDriverB(2)),
-            new PassengerCar<>(" ", "Калина", 1.5, "c", dbDrivers.getDriverB(1)),
-            new PassengerCar<>("ЗАЗ", "1.2 MT 968M", 1.2, "f", dbDrivers.getDriverB(0))};
+    PassengerCar<?>[] smallcar = {new PassengerCar<>("Toyota", "Chaser", 3.0, PassengerCar.CarBody.Sedan, dbDrivers.getDriverB(0)),
+            new PassengerCar<>("BMW", "750iL", 5.4, PassengerCar.CarBody.Sedan, dbDrivers.getDriverB(2)),
+            new PassengerCar<>(" ", "Калина", 1.5, PassengerCar.CarBody.NULL, dbDrivers.getDriverB(1)),
+            new PassengerCar<>("ЗАЗ", "1.2 MT 968M", 1.2, PassengerCar.CarBody.OffRoad, dbDrivers.getDriverB(0))};
 
     Trucks<?>[] trucks = {new Trucks<>("КамАЗ", "43118", 10.85, "N3", dbDrivers.getDriverC(1)),
             new Trucks<>("ЗИЛ", "131", 6.96, null, dbDrivers.getDriverC(0)),
@@ -18,12 +18,11 @@ public class DbTransport {
 
     Bus<?>[] buses = {new Bus<>("Ikarus", "250 SL", 10.4, "Large", dbDrivers.getDriverD(1)),
             new Bus<>("ЛиАЗ", "677", 6.96, null, dbDrivers.getDriverD(0)),
-            new Bus<>("ЛАЗ", "695Н", 6.0,"Average", dbDrivers.getDriverD(2)),
+            new Bus<>("ЛАЗ", "695Н", 6.0, "Average", dbDrivers.getDriverD(2)),
             new Bus<>("VolgaBus", "Серпантин-10", 8.4, "Average", dbDrivers.getDriverD(2))};
 
 
     public void getDriverCarName(int i, String classCar) {
-
         switch (classCar) {
             case "B":
                 System.out.println("Водитель " + dbDrivers.getNameDriverB(i) + " управляет автомобилем " + smallcar[i].getBrand()

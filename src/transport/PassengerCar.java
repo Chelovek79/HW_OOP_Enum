@@ -6,15 +6,15 @@ import check.Check;
 public class PassengerCar<T extends DriverB> extends Transport implements Competing {
 
     enum CarBody {
-        a("седан"),
-        b("хэтчбек"),
-        c("купе"),
-        d("универсал"),
-        e("внедорожник"),
-        f("кроссовер"),
-        g("пикап"),
-        h("фургон"),
-        i("минивен"),
+        Sedan("седан"),
+        Hatchback("хэтчбек"),
+        CopeBody("купе"),
+        Wagon("универсал"),
+        OffRoad("внедорожник"),
+        SUV("кроссовер"),
+        Pickup("пикап"),
+        Van("фургон"),
+        MiniVan("минивен"),
         NULL("данные не предоставлены...");
 
         final String bodyName;
@@ -33,10 +33,11 @@ public class PassengerCar<T extends DriverB> extends Transport implements Compet
     CarBody carBody;
     private T driver;
 
-    public PassengerCar(String brand, String model, double engineVolume, String carBody, T driver) {
+    public PassengerCar(String brand, String model, double engineVolume, CarBody carBody, T driver) {
         super(brand, model);
         this.engineVolume = Check.checkingEngineVolume(engineVolume, 1.5);
-        this.carBody = CarBody.valueOf(Check.checkingType(carBody));
+//        this.carBody = CarBody.valueOf(Check.checkingType(carBody.name()));
+        this.carBody = carBody;
         this.driver = driver;
     }
 
