@@ -3,14 +3,47 @@ package transport;
 import drivers.DriverD;
 import check.Check;
 
-public class Bus <T extends DriverD> extends Transport implements Competing {
+public class Bus<T extends DriverD> extends Transport implements Competing {
+
+    enum NumberOfSeats {
+
+        EspeciallySmall(0, 10),
+        Small(10, 25),
+        Average(25, 50),
+        Large(50, 80),
+        EspeciallyLarge(80, 120),
+        NULL (0,0);
+
+        final int from;
+        final int to;
+
+        NumberOfSeats(int from, int to) {
+            this.from = from;
+            this.to = to;
+        }
+
+        @Override
+        public String toString() {
+
+            if (this.from == 0 && this.to == 0) {
+                return "Вместимость автобуса не определена...";
+            }
+            if (this.from == 0 && this.to != 0) {
+                return "Вместимость автобуса: <= 10 мест.";
+            } else {
+                return "Вместимость автобуса: от " + this.from + " до " + this.to + " мест.";
+            }
+        }
+    }
 
     private double engineVolume;
+    private NumberOfSeats numberOfSeats;
     private T driver;
 
-    public Bus(String brand, String model, double engineVolume, T driver) {
+    public Bus(String brand, String model, double engineVolume, String seats, T driver) {
         super(brand, model);
         this.engineVolume = Check.checkingEngineVolume(engineVolume, 5.0);
+        this.numberOfSeats = NumberOfSeats.valueOf(Check.checkingType(seats));
         this.driver = driver;
     }
 
@@ -31,8 +64,13 @@ public class Bus <T extends DriverD> extends Transport implements Competing {
     }
 
     @Override
+    public String printType () {
+            return getBrand() + " " + getModel() + ". " + numberOfSeats;
+    }
+
+    @Override
     public String toString() {
-        return super.toString() +  ". Объём двигателя " + engineVolume + " " + driver;
+        return super.toString() + ". Объём двигателя " + engineVolume + " " + driver;
     }
 
     @Override

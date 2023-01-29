@@ -1,14 +1,15 @@
 package transport;
 
 import check.Check;
+
 public abstract class Transport {
 
     private final String brand;
     private final String model;
 
     public Transport(String brand, String model) {
-        this.brand = Check.checkingString(brand,"Самоделка");
-        this.model = Check.checkingString(model,"1");
+        this.brand = Check.checkingString(brand, "Самоделка");
+        this.model = Check.checkingString(model, "1");
     }
 
     public String getBrand() {
@@ -26,6 +27,8 @@ public abstract class Transport {
     public static void stopMoving() {
         System.out.println("Тпруу... ;)");
     }
+
+    public abstract String printType();
 
     @Override
     public String toString() {

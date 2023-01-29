@@ -16,4 +16,11 @@ public class Check {
             return value;
         }
     }
+    public static String checkingType(String type) {
+        if (type == null || type.isBlank()) {
+            return "NULL";
+        } else {
+            return type;
+        }
+    }
 }
