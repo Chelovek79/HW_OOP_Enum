@@ -6,34 +6,37 @@ import check.Check;
 public class PassengerCar<T extends DriverB> extends Transport implements Competing {
 
     enum CarBody {
-        a ("Седан"),
-        b ("Хэтчбек"),
-        c ("Купе"),
-        d ("Универсал"),
-        e ("Внедорожник"),
-        f ("Кроссовер"),
-        g ("Пикап"),
-        h ("Фургон"),
-        i ("Минивен");
+        a("седан"),
+        b("хэтчбек"),
+        c("купе"),
+        d("универсал"),
+        e("внедорожник"),
+        f("кроссовер"),
+        g("пикап"),
+        h("фургон"),
+        i("минивен"),
+        NULL("данные не предоставлены...");
 
         final String bodyName;
 
-        CarBody (String bodyName) {
+        CarBody(String bodyName) {
             this.bodyName = bodyName;
         }
 
         @Override
         public String toString() {
-            return "Тип кузова - " + CarBody.this.bodyName;
+            return "Тип кузова - " + CarBody.this.bodyName + ".";
         }
     }
 
     private double engineVolume;
+    CarBody carBody;
     private T driver;
 
-    public PassengerCar(String brand, String model, double engineVolume, T driver) {
+    public PassengerCar(String brand, String model, double engineVolume, String carBody, T driver) {
         super(brand, model);
         this.engineVolume = Check.checkingEngineVolume(engineVolume, 1.5);
+        this.carBody = CarBody.valueOf(Check.checkingType(carBody));
         this.driver = driver;
     }
 
@@ -51,6 +54,19 @@ public class PassengerCar<T extends DriverB> extends Transport implements Compet
 
     public void setDriver(T driver) {
         this.driver = driver;
+    }
+
+    public CarBody getCarBody() {
+        return carBody;
+    }
+
+    public void setCarBody(CarBody carBody) {
+        this.carBody = carBody;
+    }
+
+    @Override
+    public String printType() {
+        return getBrand() + " " + getModel() + ". " + carBody;
     }
 
     @Override

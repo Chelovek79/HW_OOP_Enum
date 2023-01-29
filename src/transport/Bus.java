@@ -11,7 +11,8 @@ public class Bus<T extends DriverD> extends Transport implements Competing {
         Small(10, 25),
         Average(25, 50),
         Large(60, 80),
-        EspeciallyLarge(80, 120);
+        EspeciallyLarge(80, 120),
+        NULL (0,0);
 
         final int from;
         final int to;
@@ -24,20 +25,25 @@ public class Bus<T extends DriverD> extends Transport implements Competing {
         @Override
         public String toString() {
 
-            if (this.from == 0) {
+            if (this.from == 0 && this.to == 0) {
+                return "Вместимость автобуса не определена...";
+            }
+            if (this.from == 0 && this.to != 0) {
                 return "Вместимость автобуса: <= 10 мест.";
             } else {
-                return "Вместимость автобуса: " + this.from + " < x <= " + this.to;
+                return "Вместимость автобуса: от " + this.from + " до " + this.to + " мест.";
             }
         }
     }
 
     private double engineVolume;
+    private NumberOfSeats numberOfSeats;
     private T driver;
 
-    public Bus(String brand, String model, double engineVolume, T driver) {
+    public Bus(String brand, String model, double engineVolume, String seats, T driver) {
         super(brand, model);
         this.engineVolume = Check.checkingEngineVolume(engineVolume, 5.0);
+        this.numberOfSeats = NumberOfSeats.valueOf(Check.checkingType(seats));
         this.driver = driver;
     }
 
@@ -55,6 +61,11 @@ public class Bus<T extends DriverD> extends Transport implements Competing {
 
     public void setDriver(T driver) {
         this.driver = driver;
+    }
+
+    @Override
+    public String printType () {
+            return getBrand() + " " + getModel() + ". " + numberOfSeats;
     }
 
     @Override
