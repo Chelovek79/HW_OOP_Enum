@@ -3,7 +3,34 @@ package transport;
 import drivers.DriverD;
 import check.Check;
 
-public class Bus <T extends DriverD> extends Transport implements Competing {
+public class Bus<T extends DriverD> extends Transport implements Competing {
+
+    enum NumberOfSeats {
+
+        EspeciallySmall(0, 10),
+        Small(10, 25),
+        Average(25, 50),
+        Large(60, 80),
+        EspeciallyLarge(80, 120);
+
+        final int from;
+        final int to;
+
+        NumberOfSeats(int from, int to) {
+            this.from = from;
+            this.to = to;
+        }
+
+        @Override
+        public String toString() {
+
+            if (this.from == 0) {
+                return "Вместимость автобуса: <= 10 мест.";
+            } else {
+                return "Вместимость автобуса: " + this.from + " < x <= " + this.to;
+            }
+        }
+    }
 
     private double engineVolume;
     private T driver;
@@ -32,7 +59,7 @@ public class Bus <T extends DriverD> extends Transport implements Competing {
 
     @Override
     public String toString() {
-        return super.toString() +  ". Объём двигателя " + engineVolume + " " + driver;
+        return super.toString() + ". Объём двигателя " + engineVolume + " " + driver;
     }
 
     @Override

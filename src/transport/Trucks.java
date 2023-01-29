@@ -5,6 +5,34 @@ import check.Check;
 
 public class Trucks<T extends DriverC> extends Transport implements Competing {
 
+    enum LoadCapacity {
+
+        N1(0, 3.5f),
+        N2(3.5f, 12f),
+        N3(12f, 100f);
+
+        final float from;
+        final float to;
+
+        LoadCapacity(float from, float to) {
+            this.from = from;
+            this.to = to;
+        }
+
+        @Override
+        public String toString() {
+
+            if (this.from == 0) {
+                return "Грузопдъёмность: <= " + this.to + "т.";
+            }
+            if (this.to == 100) {
+                return "Грузоподъёмность: > " + this.from + "т.";
+            } else {
+                return "Грузоподъёмность: 3.5 т < x <= 12 т";
+            }
+        }
+    }
+
     private double engineVolume;
     private T driver;
 
@@ -32,7 +60,7 @@ public class Trucks<T extends DriverC> extends Transport implements Competing {
 
     @Override
     public String toString() {
-        return super.toString() +  ". Объём двигателя " + engineVolume + " " + driver;
+        return super.toString() + ". Объём двигателя " + engineVolume + " " + driver;
     }
 
     @Override

@@ -5,6 +5,29 @@ import check.Check;
 
 public class PassengerCar<T extends DriverB> extends Transport implements Competing {
 
+    enum CarBody {
+        a ("Седан"),
+        b ("Хэтчбек"),
+        c ("Купе"),
+        d ("Универсал"),
+        e ("Внедорожник"),
+        f ("Кроссовер"),
+        g ("Пикап"),
+        h ("Фургон"),
+        i ("Минивен");
+
+        final String bodyName;
+
+        CarBody (String bodyName) {
+            this.bodyName = bodyName;
+        }
+
+        @Override
+        public String toString() {
+            return "Тип кузова - " + CarBody.this.bodyName;
+        }
+    }
+
     private double engineVolume;
     private T driver;
 
@@ -32,7 +55,7 @@ public class PassengerCar<T extends DriverB> extends Transport implements Compet
 
     @Override
     public String toString() {
-        return super.toString() +  ". Объём двигателя " + engineVolume + " " + driver;
+        return super.toString() + ". Объём двигателя " + engineVolume + " " + driver;
     }
 
     @Override
